@@ -1,0 +1,26 @@
+version: '3.8'
+#Docker Networks
+networks:
+  super-checkout:
+    driver: bridge
+    external:
+      name: super-checkout
+
+services:
+  rastreio:
+    restart: always
+    image: node:alpine
+    container_name: rastreio
+    hostname: rastreio
+    command: sh -c "cd /code && yarn && yarn build && yarn start"
+    user: 1000:1000
+    ports:
+      - "3066:3000"
+    volumes:
+      - type: bind
+        source: ${APP_LOCATION}
+        target: /code
+    networks:
+      super-checkout:
+        aliases:
+          - rastreio
