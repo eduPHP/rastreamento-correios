@@ -7,7 +7,6 @@ import Footer from '../components/Footer';
 
 const useHistoryState = createPersistedState('Tracker@history');
 
-
 export default function Home() {
   const [history, setHistory] = useHistoryState<string[]>([]);
 
