@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return { props: {} };
   }
 
-  const { data } = await axios.get<ITracking>(`http://localhost:3000/api/${code}`);
+  const { data } = await axios.get<ITracking>(`/api/${code}`);
 
   return {
     props: { tracking: data },
